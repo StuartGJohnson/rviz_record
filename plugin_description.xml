@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<library path="rviz_record_plugin">
+  <class
+    name="rviz_record/RecordPanel"
+    type="rviz_record::RecordPanel"
+    base_class_type="rviz_common::Panel">
+    <description>
+      Record the main RenderPanel to a video via GStreamer. Control via services:
+      /rviz_record/start and /rviz_record/stop.
+    </description>
+  </class>
+</library>

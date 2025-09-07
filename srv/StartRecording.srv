@@ -1,0 +1,11 @@
+# Request
+string filename     # e.g. "/tmp/rviz_capture.mp4" or ".webm"
+float32 fps         # e.g. 30.0 or 60.0
+float32 scale       # 1.0 = native size; 0.5 = half; 2.0 = double
+string codec        # "h264" (mp4) or "vp9" (webm)
+bool use_sim_time   # true: timestamp frames with ROS time; false: wall-time pacing
+---
+# Response
+bool accepted
+string message
+

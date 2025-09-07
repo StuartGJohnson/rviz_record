@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>rviz_record</name>
+  <version>0.1.0</version>
+  <description>RViz2 panel plugin to record the RenderPanel to video via GStreamer, controlled by ROS services.</description>
+
+  <maintainer email="stuart.g.johnson@gmail.com">Stuart Johnson</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rviz_common</depend>
+  <depend>rviz_rendering</depend>
+  <depend>pluginlib</depend>
+
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <!-- GStreamer runtime -->
+  <exec_depend>gstreamer1.0-tools</exec_depend>
+  <exec_depend>gstreamer1.0-plugins-base</exec_depend>
+  <exec_depend>gstreamer1.0-plugins-good</exec_depend>
+  <exec_depend>gstreamer1.0-plugins-bad</exec_depend>
+  <exec_depend>gstreamer1.0-libav</exec_depend>
+
+  <!-- Qt -->
+  <build_depend>qtbase5-dev</build_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <rviz_common plugin="${prefix}/plugin_description.xml"/>
+  </export>
+</package>

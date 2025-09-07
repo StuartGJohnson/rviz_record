@@ -1,0 +1,9 @@
+# Request (empty)
+---
+# Response
+bool stopped
+string output_path
+uint64 frames
+float32 duration_sec
+string message
+
