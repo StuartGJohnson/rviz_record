@@ -16,9 +16,11 @@ After sourcing the package install, launch rviz2, and add an rviz_record/RecordP
 The current version is merely capturing the screen real estate corresponding to the rviz capture window, so if the window is covered by anything, it will show up in your movie. A version which does not merely screen capture is possible via Ogre calls and is in the works.
 
 Starting a movie can be accomplished via any ros2 client via a service call. From the command line, we have, for example:
+
 ```ros2 service call /rviz_record/start rviz_record/srv/StartRecording "{filename: '/tmp/explore7.mp4', fps: 10.0, scale: 1.0, codec: 'h264', use_sim_time: false}"```
 
 Stopping is accomplished via:
+
 ```ros2 service call /rviz_record/stop rviz_record/srv/StopRecording "{}"```
 
 
