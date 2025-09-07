@@ -26,7 +26,7 @@ Stopping is accomplished via:
 
 ## Credits/LLM story
 
-This code was developed from my concept via GPT5 (OpenAI, September 2025). This progressed as follows:
+This code was developed from my concept via collaboration with GPT5 (OpenAI, September 2025). This progressed as follows:
 
 - I suggested to GPT5 that it would be useful to have a tool which captured the rviz render window to a movie. We had some discussion and agreed for a first version, an rviz2 plugin (c++) gstreamer-based screen capture implementation would be sufficient.
 - GPT5 implemented this as a complete ros2 package
