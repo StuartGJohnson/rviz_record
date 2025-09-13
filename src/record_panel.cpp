@@ -134,8 +134,10 @@ void RecordPanel::startSrvCb(
   std::string err;
   if (startRecordingInternal(req->filename, req->fps, req->scale, req->codec, req->use_sim_time, err)) {
     res->message = "Recording started";
+    res->accepted = true;
   } else {
     res->message = "Failed: " + err;
+    res->accepted = false;
   }
   update_status_panel();
 }

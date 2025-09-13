@@ -11,7 +11,7 @@ This ROS2 package can be built in the standard way, followed by sourcing install
 
 ## usage
 
-After sourcing the package install, launch rviz2, and add an rviz_record/RecordPanel via Panels/Add New Panel. The newly added plugin is now awaiting service calls to start and stop movies.
+After sourcing the package install, launch rviz2, and add an rviz_record/RecordPanel via Panels/Add New Panel. The newly added plugin is now awaiting service calls to start and stop movies. Launching rviz2 via ```ros2 run rviz2``` can be problematic. Avoid this.
 
 The current version is merely capturing the screen real estate corresponding to the rviz capture window, so if the window is covered by anything, it will show up in your movie. A version which does not merely screen capture is possible via Ogre calls and is in the works.
 
