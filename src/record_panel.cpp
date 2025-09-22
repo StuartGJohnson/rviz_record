@@ -177,9 +177,15 @@ void RecordPanel::start_ui_grabber(int capture_fps)
 
   QMetaObject::invokeMethod(w, [this, w, interval_ms]() {
     struct Grabber : QObject {
-      rviz_common::RenderPanel* w; QTimer* t; std::function<void(const QImage&)> cb;
-      Grabber(rviz_common::RenderPanel* w_, int interval, std::function<void(const QImage&)> cb_)
-        : w(w_), t(new QTimer(this)), cb(std::move(cb_))
+      rviz_common::RenderPanel* w;
+      QTimer* t;
+      std::function<void(const QImage&)> cb;
+      rclcpp::Logger logger;
+      Grabber(rviz_common::RenderPanel* w_,
+              int interval,
+              std::function<void(const QImage&)> cb_,
+              const rclcpp::Logger& log)
+        : w(w_), t(new QTimer(this)), cb(std::move(cb_)), logger(log)
       {
         t->setTimerType(Qt::CoarseTimer);
         connect(t, &QTimer::timeout, this, [this]() {
@@ -201,7 +207,12 @@ void RecordPanel::start_ui_grabber(int capture_fps)
             }
           }
 
-          if (img.isNull()) return;
+          if (img.isNull()) {
+              // RCLCPP_INFO(logger, "img is null!\n");
+              return;
+          }
+
+          //RCLCPP_INFO(logger, "image width, height: %d %d", img.width(), img.height());
 
           // Even dims for I420/x264
           int ew = (img.width()  & 1) ? img.width()  - 1 : img.width();
@@ -225,7 +236,8 @@ void RecordPanel::start_ui_grabber(int capture_fps)
         update_status_panel();
       }
     };
-    grabber_ = new Grabber(w, interval_ms, store);
+    auto logger = this->getLogger();
+    grabber_ = new Grabber(w, interval_ms, store, logger);
   }, Qt::QueuedConnection);
 }
 
